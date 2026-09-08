@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07111d">
+<meta name="description" content="veritaScript™ — capturing the true picture. Intelligent examination answer-book digitization technology.">
+<title>veritaScript™ | capturing the true picture</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#07111d;
+  --navy2:#0b1827;
+  --ink:#102b4a;
+  --blue:#0755a8;
+  --blue2:#1d73d5;
+  --gold:#d7a63e;
+  --gold2:#f1d28a;
+  --red:#c81727;
+  --paper:#fff;
+  --cream:#f8f6f1;
+  --mist:#eef6fb;
+  --text:#34465a;
+  --muted:#718096;
+  --line:#e4e8ed;
+  --max:1400px;
+  --shadow:0 22px 60px rgba(7,17,29,.16);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  background:#fff;
+  font-family:Inter,Arial,sans-serif;
+  line-height:1.6;
+}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{width:min(calc(100% - 56px),var(--max));margin:auto}
+
+h1,h2,h3{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  color:var(--ink);
+  line-height:.98;
+  margin:0;
+}
+h1{font-size:clamp(3.8rem,6.2vw,7rem);font-weight:600}
+h2{font-size:clamp(2.8rem,4.4vw,4.7rem);font-weight:600}
+h3{font-size:2rem;font-weight:600}
+p{margin:0}
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--gold);
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.eyebrow:before,.eyebrow:after{
+  content:"";
+  width:34px;height:1px;background:var(--gold);
+}
+.eyebrow.left:after{display:none}
+.lead{font-size:1.05rem;color:#5f6e7e;max-width:650px}
+
+/* NAV */
+.site-nav{
+  position:fixed;z-index:100;top:0;left:0;right:0;
+  background:rgba(7,17,29,.92);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+}
+.nav-inner{height:86px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.brand-logo{width:252px;height:auto}
+.nav-links{display:flex;align-items:center;gap:31px;color:#e8edf4;font-size:.78rem}
+.nav-links a{position:relative;transition:.2s;color:#e8edf4}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-links a.active:after{
+  content:"";position:absolute;left:0;right:0;bottom:-12px;height:2px;background:var(--gold);
+}
+.nav-button{
+  color:#17263a!important;
+  background:linear-gradient(135deg,#f3d78d,#dcae4f);
+  padding:13px 23px;border-radius:999px;font-weight:700;
+}
+.nav-button:after{display:none!important}
+
+/* HERO */
+.hero{
+  min-height:720px;
+  padding:145px 0 48px;
+  background:
+    radial-gradient(circle at 68% 55%,rgba(50,126,215,.18),transparent 27%),
+    linear-gradient(115deg,#07111d 0%,#0a1725 56%,#101b27 100%);
+  color:#fff;
+  position:relative;overflow:hidden;
+}
+.hero:after{
+  content:"";
+  position:absolute;left:0;right:0;bottom:0;height:130px;
+  background:linear-gradient(transparent,rgba(5,12,20,.6));
+  pointer-events:none;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1.25fr;gap:60px;align-items:center;position:relative;z-index:2;
+}
+.hero-copy h1{color:#fff;margin:24px 0 20px;max-width:700px}
+.hero-copy h1 em{font-style:normal;color:var(--gold2)}
+.hero-copy .lead{color:#d6dfe8;font-size:1.08rem;max-width:610px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:14px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.7);
+  font-size:.78rem;font-weight:700;
+}
+.btn.gold{background:linear-gradient(135deg,#f2d58e,#dcad4c);border:0;color:#16263a}
+.btn.dark{color:#fff;background:transparent}
+.hero-strap{
+  margin-top:65px;color:#c9d4df;letter-spacing:.22em;font-size:.63rem;
+  display:flex;gap:18px;align-items:center;white-space:nowrap;
+}
+.hero-strap:before,.hero-strap:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(64,145,255,.8))}
+.hero-visual{
+  min-height:430px;border:1px solid rgba(255,255,255,.13);border-radius:5px;
+  background:linear-gradient(145deg,#0c1724,#111d29);
+  box-shadow:0 35px 90px rgba(0,0,0,.35);
+  display:grid;place-items:center;position:relative;overflow:hidden;
+}
+.hero-visual:before{
+  content:"";position:absolute;inset:auto -10% 0;height:180px;
+  background:radial-gradient(ellipse,rgba(67,137,203,.22),transparent 70%);
+}
+.media-placeholder{
+  width:72%;min-height:250px;border:1px dashed rgba(255,255,255,.52);
+  display:grid;place-items:center;text-align:center;color:#b9c5d1;padding:30px;position:relative;z-index:2;
+}
+.media-placeholder strong{display:block;font-size:.76rem;letter-spacing:.12em;margin-top:12px}
+.media-placeholder small{font-size:.68rem;color:#8d9baa}
+.media-icon{
+  width:45px;height:38px;border:2px solid #9ca8b5;border-radius:3px;position:relative;margin:auto;
+}
+.media-icon:before{
+  content:"";position:absolute;width:8px;height:8px;border:2px solid #9ca8b5;border-radius:50%;left:6px;top:6px
+}
+.media-icon:after{
+  content:"";position:absolute;left:5px;right:5px;bottom:5px;height:13px;
+  border-left:2px solid #9ca8b5;border-top:2px solid #9ca8b5;transform:skew(-25deg)
+}
+.hero-product-label{
+  position:absolute;right:20px;bottom:18px;font-size:.62rem;letter-spacing:.18em;color:#dce6ee;
+}
+
+/* STORY */
+.story{padding:70px 0;background:#fff}
+.story-grid{display:grid;grid-template-columns:1.05fr 1.25fr .65fr;gap:38px;align-items:stretch}
+.story-image{
+  min-height:280px;background:
+    linear-gradient(135deg,rgba(8,20,33,.16),rgba(8,20,33,.02)),
+    linear-gradient(145deg,#c9a77a,#7d6651 55%,#312a25);
+  position:relative;overflow:hidden;
+}
+.story-image:after{
+  content:"Every script\A tells a story.";
+  white-space:pre;
+  position:absolute;left:35px;bottom:30px;color:#fff;
+  font:italic 2.15rem/1.05 "Cormorant Garamond",Georgia,serif;
+  text-shadow:0 2px 12px rgba(0,0,0,.45);
+}
+.story-copy{padding:4px 0}
+.story-copy h2{font-size:3.2rem;margin:12px 0 18px}
+.story-copy p{font-size:.9rem;color:#5d6978;margin-bottom:17px}
+.story-quote{
+  background:#f8f8f7;border-left:3px solid var(--gold);
+  padding:40px 30px;display:flex;flex-direction:column;justify-content:center;
+  font:italic 1.7rem/1.2 "Cormorant Garamond",Georgia,serif;color:#27384a;
+}
+.quote-brand{font-style:normal;margin-top:30px;font-family:Inter,sans-serif;font-size:.9rem;font-weight:700;color:var(--ink)}
+.quote-brand span{display:block;font-size:.58rem;letter-spacing:.15em;color:var(--blue)}
+
+/* PHILOSOPHY */
+.philosophy{padding:54px 0 68px;background:var(--cream);text-align:center}
+.philosophy .lead{margin:10px auto 35px}
+.principles{display:grid;grid-template-columns:repeat(6,1fr);gap:0}
+.principle{padding:12px 18px;border-right:1px solid #ddd9d0}
+.principle:last-child{border-right:0}
+.icon{
+  width:48px;height:48px;margin:0 auto 13px;color:var(--gold);
+  display:grid;place-items:center;font-size:1.7rem;
+}
+.principle h3{font-size:1.35rem}
+.principle p{font-size:.76rem;color:#6b7683;line-height:1.45;margin-top:4px}
+
+/* PRODUCT */
+.product{padding:70px 0;background:#fff}
+.product-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.video-card{
+  min-height:380px;background:
+    radial-gradient(circle at 50% 45%,rgba(55,115,173,.2),transparent 40%),
+    linear-gradient(145deg,#09131f,#152536);
+  display:grid;place-items:center;position:relative;overflow:hidden;
+}
+.video-card:after{
+  content:"360°";position:absolute;bottom:18px;left:0;right:0;text-align:center;
+  color:#fff;font:700 1.6rem "Cormorant Garamond",serif;letter-spacing:.08em
+}
+.play{
+  width:74px;height:74px;border:1px solid #fff;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:1.3rem
+}
+.product-copy .eyebrow{margin-bottom:10px}
+.product-copy h2{font-size:3.5rem;margin-bottom:14px}
+.checks{list-style:none;padding:0;margin:18px 0 25px}
+.checks li{margin:9px 0;font-size:.82rem;color:#566575}
+.checks li:before{content:"✓";display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#d2a44b;color:#fff;font-size:.68rem;margin-right:9px}
+.product-photo{
+  min-height:290px;background:#f4f7f9;border:1px solid #e2e8ee;
+  display:grid;place-items:center;margin-top:20px
+}
+
+/* APPLICATIONS */
+.applications{padding:65px 0;background:linear-gradient(135deg,#eef7fc,#e8f3fa)}
+.applications{text-align:center}
+.application-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:30px}
+.application{
+  min-height:115px;background:rgba(255,255,255,.88);border:1px solid #dce8f1;border-radius:5px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;
+}
+.application .app-icon{font-size:1.8rem;color:var(--blue);margin-bottom:8px}
+.application strong{font-size:.69rem;color:#17304c}
+.applications .btn{margin-top:27px;background:#0c4e92;color:#fff;border:0}
+
+/* FOOTER */
+footer{background:linear-gradient(135deg,#07111d,#0d1925);color:#cbd4dd}
+.footer-top{padding:45px 0 35px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:45px}
+.footer-logo{width:255px}
+.footer-tag{font-family:"Cormorant Garamond",serif;font-size:1.4rem;line-height:1.1;margin-top:15px;color:#dfe6ec}
+.footer-col h4{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 13px}
+.footer-col a{display:block;color:#aeb9c5;font-size:.7rem;margin:7px 0}
+.footer-col a:hover{color:#fff}
+.social{display:flex;gap:10px;margin-top:14px}
+.social span{width:30px;height:30px;border:1px solid rgba(255,255,255,.25);border-radius:5px;display:grid;place-items:center;font-size:.7rem}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:17px 0;font-size:.63rem;color:#7f8b98;display:flex;justify-content:space-between;gap:20px}
+
+/* MOBILE */
+@media(max-width:1050px){
+  .nav-links{gap:18px}
+  .nav-links a:not(.nav-button){display:none}
+  .hero-grid,.product-grid{grid-template-columns:1fr}
+  .hero-visual{min-height:400px}
+  .principles{grid-template-columns:repeat(3,1fr)}
+  .principle:nth-child(3){border-right:0}
+  .principle:nth-child(-n+3){border-bottom:1px solid #ddd9d0;padding-bottom:25px}
+  .application-grid{grid-template-columns:repeat(4,1fr)}
+  .story-grid{grid-template-columns:1fr 1fr}
+  .story-quote{grid-column:1/-1;min-height:180px}
+  .footer-top{grid-template-columns:1.5fr 1fr 1fr}
+}
+@media(max-width:650px){
+  .container{width:min(calc(100% - 30px),var(--max))}
+  .nav-inner{height:70px}
+  .brand-logo{width:185px}
+  .hero{padding:110px 0 35px}
+  .hero-grid{gap:35px}
+  h1{font-size:3.45rem}
+  .hero-visual{min-height:310px}
+  .media-placeholder{width:82%;min-height:190px}
+  .hero-strap{margin-top:35px;letter-spacing:.12em}
+  .story,.product{padding:50px 0}
+  .story-grid{grid-template-columns:1fr}
+  .story-copy h2,.product-copy h2{font-size:2.8rem}
+  .story-image{min-height:245px}
+  .principles{grid-template-columns:1fr 1fr}
+  .principle:nth-child(3){border-right:1px solid #ddd9d0}
+  .principle:nth-child(2n){border-right:0}
+  .principle:nth-child(n){border-bottom:1px solid #ddd9d0;padding:22px 10px}
+  .principle:last-child{border-bottom:0}
+  .application-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr;gap:30px}
+  .footer-brand{grid-column:1/-1}
+  .footer-bottom{flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-nav">
+  <div class="container nav-inner">
+    <a href="#home" aria-label="veritaScript home">
+      <img class="brand-logo" src="assets/veritascript-logo.png" alt="veritaScript™ — capturing the true picture">
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#home" class="active">Home</a>
+      <a href="#story">About</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#technology">Technology</a>
+      <a href="#applications">Applications</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-button" href="#contact">Get in Touch</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>Preserving Truth<br>in <em>Every Script</em></h1>
+        <p class="lead">
+          Advanced digitization for examination answer books — built for
+          integrity, accuracy and trust.
+        </p>
+        <div class="hero-actions">
+          <a class="btn gold" href="#technology">Explore Our Technology <span>→</span></a>
+          <a class="btn dark" href="#story">Our Story</a>
+        </div>
+      </div>
+
+      <!-- Replace this placeholder with the approved scanner photograph. -->
+      <div class="hero-visual" aria-label="Scanner photograph placeholder">
+        <div class="media-placeholder">
+          <div>
+            <div class="media-icon"></div>
+            <strong>PRODUCT IMAGE PLACEHOLDER</strong>
+            <small>Replace with actual scanner photograph</small>
+          </div>
+        </div>
+        <div class="hero-product-label">TRUTH &nbsp; | &nbsp; INTEGRITY &nbsp; | &nbsp; KNOWLEDGE &nbsp; | &nbsp; A BRIGHTER TOMORROW</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="container story-grid">
+    <!-- Replace with a real examination/answer-book image. -->
+    <div class="story-image" role="img" aria-label="Examination answer book image placeholder"></div>
+
+    <div class="story-copy">
+      <span class="eyebrow left">Our Story</span>
+      <h2>More Than Paper.<br>A Brighter Tomorrow.</h2>
+      <p>
+        An examination answer book is more than paper. It is the recorded
+        evidence of a student's knowledge, effort and aspiration. At
+        veritaScript, we believe that its digital representation must preserve
+        that truth faithfully — in every detail.
+      </p>
+      <p>
+        We design and build intelligent digitization solutions that help
+        educational institutions, examination bodies and organizations
+        capture, protect and manage handwritten knowledge with confidence.
+      </p>
+    </div>
+
+    <aside class="story-quote">
+      “Technology should empower fairness, not replace it.”
+      <div class="quote-brand">veritaScript
+        <span>capturing the true picture</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="philosophy" id="philosophy">
+  <div class="container">
+    <span class="eyebrow">Our Philosophy</span>
+    <h2>Principles that Guide Us</h2>
+    <p class="lead">Our work is guided by a simple but powerful belief — that truth deserves the best possible technology.</p>
+
+    <div class="principles">
+      <article class="principle"><div class="icon">♢</div><h3>Truth</h3><p>Preserve the authentic record</p></article>
+      <article class="principle"><div class="icon">✥</div><h3>Integrity</h3><p>Maintain fidelity end to end</p></article>
+      <article class="principle"><div class="icon">◎</div><h3>Precision</h3><p>Capture every meaningful detail</p></article>
+      <article class="principle"><div class="icon">♧</div><h3>Security</h3><p>Protect data throughout its lifecycle</p></article>
+      <article class="principle"><div class="icon">☼</div><h3>Innovation</h3><p>Use technology where it truly matters</p></article>
+      <article class="principle"><div class="icon">⌁</div><h3>Made in India</h3><p>Designed, engineered and built in India</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="product" id="technology">
+  <div class="container product-grid">
+    <!-- Replace with actual 360° video. -->
+    <div class="video-card" id="gallery" aria-label="360 degree product video placeholder">
+      <div>
+        <div class="play">▶</div>
+        <div style="color:#d5dee8;text-align:center;font-size:.7rem;letter-spacing:.12em;margin-top:14px">360° PRODUCT VIEW</div>
+        <div style="color:#8292a1;text-align:center;font-size:.64rem;margin-top:5px">Replace with actual 360° video</div>
+      </div>
+    </div>
+
+    <div class="product-copy">
+      <span class="eyebrow left">Technology</span>
+      <h2>Engineered for Accurate Examination Digitization</h2>
+      <p class="lead">
+        Our approach is designed to digitize examination answer books with
+        high standards of image quality, reliability and security.
+      </p>
+      <ul class="checks">
+        <li>High quality document imaging</li>
+        <li>Robust and reliable performance</li>
+        <li>Designed for examination workflows</li>
+        <li>Secure and auditable digitization process</li>
+      </ul>
+      <a class="btn" style="background:#0c4e92;color:#fff;border:0" href="#contact">Learn More <span>→</span></a>
+
+      <!-- Replace with a secondary scanner/product photograph. -->
+      <div class="product-photo">
+        <div class="media-placeholder" style="border-color:#bdc8d3;color:#6c7886">
+          <div>
+            <div class="media-icon" style="border-color:#8794a2"></div>
+            <strong style="color:#596677">PRODUCT IMAGE PLACEHOLDER</strong>
+            <small>Replace with actual photograph</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="applications" id="applications">
+  <div class="container">
+    <span class="eyebrow">Applications</span>
+    <h2>Enabling Fairer and More Efficient Examinations</h2>
+    <p class="lead">Our solutions support a wide range of examination and assessment environments.</p>
+
+    <div class="application-grid">
+      <div class="application"><div class="app-icon">⌂</div><strong>Universities</strong></div>
+      <div class="application"><div class="app-icon">▥</div><strong>Examination Boards</strong></div>
+      <div class="application"><div class="app-icon">⌂</div><strong>Schools</strong></div>
+      <div class="application"><div class="app-icon">▥</div><strong>Government Organizations</strong></div>
+      <div class="application"><div class="app-icon">♙</div><strong>Recruitment Agencies</strong></div>
+      <div class="application"><div class="app-icon">▤</div><strong>Assessment Providers</strong></div>
+      <div class="application"><div class="app-icon">⊞</div><strong>And More</strong></div>
+    </div>
+
+    <a class="btn" href="#contact">Explore Applications <span>→</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer id="contact">
+  <div class="container footer-top">
+    <div class="footer-brand">
+      <img class="footer-logo" src="assets/veritascript-logo.png" alt="veritaScript™">
+      <div class="footer-tag">Preserving Knowledge.<br>Empowering Futures.</div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#home">Home</a>
+      <a href="#story">About</a>
+      <a href="#philosophy">Philosophy</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Discover</h4>
+      <a href="#technology">Technology</a>
+      <a href="#applications">Applications</a>
+      <a href="#gallery">Gallery</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="mailto:support@veritascript.org.in">support@veritascript.org.in</a>
+      <a href="#contact">Contact</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+      <div class="social">
+        <span>in</span><span>▶</span><span>𝕏</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span>© <span id="year"></span> veritaScript™. All rights reserved.</span>
+    <span>Designed and Built in India 🇮🇳</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const sections = document.querySelectorAll("main section[id]");
+const links = document.querySelectorAll(".nav-links a[href^='#']");
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+entry.target.id));
+    }
+  });
+},{rootMargin:"-35% 0px -55% 0px"});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
